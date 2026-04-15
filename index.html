@@ -1,251 +1,111 @@
-Nsomayeh, [10/15/25 8:19 AM]
-
-
-Reza, [4/15/26 5:24 AM]
-<!DOCTYPE html>
-<html lang="tr">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Yeşil Cafe</title>
-  <style>
-    * {
-      box-sizing: border-box;
-    }
-
-    body {
-      margin: 0;
-      font-family: Arial, sans-serif;
-      background: #f7f5f0;
-      color: #2f2f2f;
-      line-height: 1.6;
-    }
-
-    header {
-      background: linear-gradient(rgba(34, 51, 34, 0.78), rgba(34, 51, 34, 0.78)),
-        url('https://images.unsplash.com/photo-1509042239860-f550ce710b93?auto=format&fit=crop&w=1400&q=80') center/cover no-repeat;
-      color: white;
-      text-align: center;
-      padding: 90px 20px 70px;
-    }
-
-    header h1 {
-      margin: 0;
-      font-size: 52px;
-      letter-spacing: 1px;
-    }
-
-    header p {
-      margin: 14px 0 28px;
-      font-size: 20px;
-      color: #f1f1f1;
-    }
-
-    .buttons {
-      display: flex;
-      justify-content: center;
-      gap: 12px;
-      flex-wrap: wrap;
-    }
-
-    .btn {
-      display: inline-block;
-      padding: 13px 22px;
-      border-radius: 10px;
-      text-decoration: none;
-      font-weight: bold;
-      transition: 0.2s ease;
-    }
-
-    .btn-primary {
-      background: #6f8f6f;
-      color: white;
-    }
-
-    .btn-primary:hover {
-      background: #5f7d5f;
-    }
-
-    .btn-secondary {
-      background: white;
-      color: #2f3e2f;
-    }
-
-    .btn-secondary:hover {
-      background: #ececec;
-    }
-
-    section {
-      max-width: 1000px;
-      margin: 0 auto;
-      padding: 60px 20px;
-    }
-
-    .section-title {
-      text-align: center;
-      font-size: 34px;
-      margin-bottom: 16px;
-      color: #2f3e2f;
-    }
-
-    .section-text {
-      text-align: center;
-      max-width: 760px;
-      margin: 0 auto 35px;
-      font-size: 18px;
-      color: #555;
-    }
-
-    .menu-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
-      gap: 18px;
-      margin-top: 30px;
-    }
-
-    .menu-card {
-      background: white;
-      border-radius: 16px;
-      padding: 20px;
-      box-shadow: 0 8px 22px rgba(0, 0, 0, 0.06);
-    }
-
-    .menu-card h3 {
-      margin-top: 0;
-      color: #2f3e2f;
-      font-size: 22px;
-    }
-
-    .menu-card p {
-      margin: 8px 0;
-      color: #555;
-    }
-
-    .gallery {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-      gap: 16px;
-      margin-top: 30px;
-    }
-
-    .gallery img {
-      width: 100%;
-      height: 240px;
-      object-fit: cover;
-      border-radius: 16px;
-      box-shadow: 0 8px 22px rgba(0, 0, 0, 0.08);
-    }
-
-    .contact-box {
-      background: white;
-      border-radius: 18px;
-      padding: 28px;
-      box-shadow: 0 8px 22px rgba(0, 0, 0, 0.06);
-      text-align: center;
-    }
-
-    .contact-box p {
-      margin: 10px 0;
-      font-size: 18px;
-    }
-
-    footer {
-      background: #2f3e2f;
-      color: white;
-      text-align: center;
-      padding: 22px;
-      margin-top: 40px;
-    }
-
-    @media (max-width: 768px) {
-      header {
-        padding: 70px 18px 55px;
-      }
-
-      header h1 {
-        font-size: 40px;
-      }
-
-      .section-title {
-        font-size: 28px;
-      }
-    }
-  </style>
-</head>
-<body>
-
-  <header>
-    <h1>Yeşil Cafe</h1>
-    <p>Fresh Coffee • Good Mood</p>
-    <div class="buttons">
-      <a class="btn btn-primary" href="#menu">Menü</a>
-      <a class="btn btn-primary" href="https://wa.me/905000000000" target="_blank">WhatsApp</a>
-      <a class="btn btn-secondary" href="https://maps.google.com" target="_blank">Yol Tarifi</a>
-    </div>
-  </header>
-
-  <section>
-    <h2 class="section-title">Hoş Geldiniz</h2>
-    <p class="section-text">
-      Şişli’de sıcak, samimi ve şık bir kahve deneyimi.
-      Taze kahve, tatlı molalar ve huzurlu bir ortam için Yeşil Cafe’ye bekleriz.
-    </p>
-  </section>
-
-  <section id="menu">
-    <h2 class="section-title">Öne Çıkan Menü</h2>
-    <p class="section-text">En sevilen içecek ve tatlılarımız.</p>
-
-    <div class="menu-grid">
-      <div class="menu-card">
-        <h3>Kahveler</h3>
-        <p>Espresso — 90₺</p>
-
-
-<p>Americano — 130₺</p>
-        <p>Latte — 160₺</p>
-        <p>Cappuccino — 160₺</p>
-      </div>
-
-      <div class="menu-card">
-        <h3>Soğuk İçecekler</h3>
-        <p>Iced Americano — 180₺</p>
-        <p>Iced Latte — 200₺</p>
-        <p>Mocha — 245₺</p>
-        <p>Milkshake — 250₺</p>
-      </div>
-
-      <div class="menu-card">
-        <h3>Çay & Tatlı</h3>
-        <p>Türk Çayı — 35₺</p>
-        <p>Bitki Çayı — 90₺</p>
-        <p>Cookie — 80₺</p>
-        <p>Ev Yapımı Tatlı — 250₺</p>
+<div class="item"><span>Zereshk Polo ba Morgh</span><span class="price">420₺</span></div>
+          <div class="item"><span>Gheymeh & Pilav</span><span class="price">420₺</span></div>
+          <div class="item"><span>Ghorme Sabzi & Pilav</span><span class="price">420₺</span></div>
+        </div>
       </div>
     </div>
-  </section>
 
-  <section>
-    <h2 class="section-title">Mekanımız</h2>
-    <p class="section-text">Sıcak atmosferimizden birkaç kare.</p>
-
-    <div class="gallery">
-      <img src="https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?auto=format&fit=crop&w=900&q=80" alt="Kahve" />
-      <img src="https://images.unsplash.com/photo-1501339847302-ac426a4a7cbb?auto=format&fit=crop&w=900&q=80" alt="Cafe iç mekan" />
-      <img src="https://images.unsplash.com/photo-1511920170033-f8396924c348?auto=format&fit=crop&w=900&q=80" alt="Tatlı ve kahve" />
+    <div id="corbalar" class="category-block">
+      <h2 class="section-title">Çorbalar</h2>
+      <div class="subgrid">
+        <div class="menu-card">
+          <h3>Çorba Çeşitleri</h3>
+          <div class="item"><span>Ezogelin Çorbası</span><span class="price">150₺</span></div>
+          <div class="item"><span>Mercimek Çorbası</span><span class="price">150₺</span></div>
+          <div class="item"><span>Şehriyeli Çorba</span><span class="price">250₺</span></div>
+          <div class="item"><span>Aş Reshte (İran Çorbası)</span><span class="price">250₺</span></div>
+        </div>
+      </div>
     </div>
-  </section>
 
-  <section>
-    <h2 class="section-title">İletişim</h2>
-    <div class="contact-box">
-      <p><strong>Adres:</strong> Şişli / İstanbul</p>
-      <p><strong>Çalışma Saatleri:</strong> 07:00 – 23:00</p>
-      <p><strong>Instagram:</strong> @yesilcafe</p>
-      <p><strong>Sipariş:</strong> WhatsApp üzerinden bize ulaşabilirsiniz.</p>
+    <div id="pilavlar" class="category-block">
+      <h2 class="section-title">Pilavlar</h2>
+      <div class="subgrid">
+        <div class="menu-card">
+          <h3>Pilavlı Yemekler</h3>
+          <div class="item"><span>Zereshk Polo ba Morgh</span><span class="price">420₺</span></div>
+          <div class="item"><span>Gheymeh & Pilav</span><span class="price">420₺</span></div>
+          <div class="item"><span>Ghorme Sabzi & Pilav</span><span class="price">420₺</span></div>
+          <div class="item"><span>Tavuk Döner & Pilav</span><span class="price">280₺</span></div>
+          <div class="item"><span>Et Döner & Pilav</span><span class="price">380₺</span></div>
+          <div class="item"><span>Köfte & Pilav</span><span class="price">280₺</span></div>
+        </div>
+      </div>
+    </div>
+
+    <div id="soguk-yemekler" class="category-block">
+      <h2 class="section-title">Soğuk Yemekler</h2>
+      <div class="subgrid">
+        <div class="menu-card">
+          <h3>Soğuk Çeşitler</h3>
+          <div class="item"><span>Kuku Sabzi</span><span class="price">220₺</span></div>
+          <div class="item"><span>Patates Kuku</span><span class="price">200₺</span></div>
+          <div class="item"><span>Kotlet (İran Usulü Köfte)</span><span class="price">230₺</span></div>
+          <div class="item"><span>Oliviye</span><span class="price">250₺</span></div>
+          <div class="item"><span>Amerikan Salatası</span><span class="price">250₺</span></div>
+          <div class="item"><span>Şole Zerd</span><span class="price">150₺</span></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="category-block">
+      <h2 class="section-title">Atıştırmalıklar</h2>
+      <div class="subgrid">
+        <div class="menu-card">
+          <h3>Atıştırmalıklar</h3>
+          <div class="item"><span>Patates Tabağı</span><span class="price">140₺</span></div>
+          <div class="item"><span>Samosa (Sebzeli Börek)</span><span class="price">180₺</span></div>
+          <div class="item"><span>Falafel (Nohut Köftesi)</span><span class="price">180₺</span></div>
+          <div class="item"><span>Çıtır Tavuk</span><span class="price">260₺</span></div>
+        </div>
+      </div>
+    </div>
+
+    <div id="tatlilar" class="category-block">
+      <h2 class="section-title">Tatlılar</h2>
+      <div class="subgrid">
+        <div class="menu-card">
+          <h3>Cheesecake Çeşitleri</h3>
+          <div class="item"><span>San Sebastian Cheesecake</span><span class="price">270₺</span></div>
+          <div class="item"><span>Classic Cheesecake</span><span class="price">250₺</span></div>
+          <p class="note">Limon / Lotus / Frambuaz</p>
+        </div>
+
+        <div id="kekler" class="menu-card">
+          <h3>Kekler</h3>
+          <div class="item"><span>Mozaik Pasta</span><span class="price">190₺</span></div>
+          <div class="item"><span>Islak Kek (Çikolatalı)</span><span class="price">170₺</span></div>
+          <div class="item"><span>Brownie</span><span class="price">230₺</span></div>
+        </div>
+
+        <div class="menu-card">
+          <h3>Özel Tatlılar</h3>
+          <div class="item"><span>Magnolia</span><span class="price">220₺</span></div>
+          <div class="item"><span>Meyve Tabağı</span><span class="price">230₺</span></div>
+        </div>
+
+        <div class="menu-card">
+          <h3>Satış Arttırıcı Öneri</h3>
+          <div class="item"><span>San Sebastian + Kahve</span><span class="price">390₺</span></div>
+          <div class="item"><span>İran Çayı + Mozaik Pasta</span><span class="price">230₺</span></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="category-block">
+      <h2 class="section-title">İletişim</h2>
+      <div class="contact-box">
+        <p><strong>Adres:</strong> Şişli / İstanbul</p>
+        <p><strong>Çalışma Saatleri:</strong> 07:00 – 23:00</p>
+        <p><strong>Instagram:</strong> @yesilcafe</p>
+        <p><strong>Sipariş:</strong> WhatsApp üzerinden bize ulaşabilirsiniz.</p>
+      </div>
     </div>
   </section>
 
   <footer>
     ©️ 2026 Yeşil Cafe • Fresh Coffee • Good Mood
   </footer>
+
+</body>
+</html>

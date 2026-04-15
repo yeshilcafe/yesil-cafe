@@ -1,75 +1,251 @@
+Nsomayeh, [10/15/25 8:19 AM]
+
+
+Reza, [4/15/26 5:24 AM]
 <!DOCTYPE html>
 <html lang="tr">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Yeşil Cafe</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Yeşil Cafe</title>
+  <style>
+    * {
+      box-sizing: border-box;
+    }
 
-<style>
-body {
-  margin: 0;
-  font-family: Arial, sans-serif;
-  background: #f8f8f8;
-  text-align: center;
-}
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background: #f7f5f0;
+      color: #2f2f2f;
+      line-height: 1.6;
+    }
 
-header {
-  background: #2f3e2f;
-  color: white;
-  padding: 40px 20px;
-}
+    header {
+      background: linear-gradient(rgba(34, 51, 34, 0.78), rgba(34, 51, 34, 0.78)),
+        url('https://images.unsplash.com/photo-1509042239860-f550ce710b93?auto=format&fit=crop&w=1400&q=80') center/cover no-repeat;
+      color: white;
+      text-align: center;
+      padding: 90px 20px 70px;
+    }
 
-h1 {
-  margin: 0;
-  font-size: 40px;
-}
+    header h1 {
+      margin: 0;
+      font-size: 52px;
+      letter-spacing: 1px;
+    }
 
-p {
-  margin-top: 10px;
-  font-size: 18px;
-}
+    header p {
+      margin: 14px 0 28px;
+      font-size: 20px;
+      color: #f1f1f1;
+    }
 
-.btn {
-  display: inline-block;
-  margin: 10px;
-  padding: 12px 20px;
-  background: #5a7f5a;
-  color: white;
-  text-decoration: none;
-  border-radius: 8px;
-}
+    .buttons {
+      display: flex;
+      justify-content: center;
+      gap: 12px;
+      flex-wrap: wrap;
+    }
 
-section {
-  padding: 40px 20px;
-}
-</style>
+    .btn {
+      display: inline-block;
+      padding: 13px 22px;
+      border-radius: 10px;
+      text-decoration: none;
+      font-weight: bold;
+      transition: 0.2s ease;
+    }
+
+    .btn-primary {
+      background: #6f8f6f;
+      color: white;
+    }
+
+    .btn-primary:hover {
+      background: #5f7d5f;
+    }
+
+    .btn-secondary {
+      background: white;
+      color: #2f3e2f;
+    }
+
+    .btn-secondary:hover {
+      background: #ececec;
+    }
+
+    section {
+      max-width: 1000px;
+      margin: 0 auto;
+      padding: 60px 20px;
+    }
+
+    .section-title {
+      text-align: center;
+      font-size: 34px;
+      margin-bottom: 16px;
+      color: #2f3e2f;
+    }
+
+    .section-text {
+      text-align: center;
+      max-width: 760px;
+      margin: 0 auto 35px;
+      font-size: 18px;
+      color: #555;
+    }
+
+    .menu-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+      gap: 18px;
+      margin-top: 30px;
+    }
+
+    .menu-card {
+      background: white;
+      border-radius: 16px;
+      padding: 20px;
+      box-shadow: 0 8px 22px rgba(0, 0, 0, 0.06);
+    }
+
+    .menu-card h3 {
+      margin-top: 0;
+      color: #2f3e2f;
+      font-size: 22px;
+    }
+
+    .menu-card p {
+      margin: 8px 0;
+      color: #555;
+    }
+
+    .gallery {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 16px;
+      margin-top: 30px;
+    }
+
+    .gallery img {
+      width: 100%;
+      height: 240px;
+      object-fit: cover;
+      border-radius: 16px;
+      box-shadow: 0 8px 22px rgba(0, 0, 0, 0.08);
+    }
+
+    .contact-box {
+      background: white;
+      border-radius: 18px;
+      padding: 28px;
+      box-shadow: 0 8px 22px rgba(0, 0, 0, 0.06);
+      text-align: center;
+    }
+
+    .contact-box p {
+      margin: 10px 0;
+      font-size: 18px;
+    }
+
+    footer {
+      background: #2f3e2f;
+      color: white;
+      text-align: center;
+      padding: 22px;
+      margin-top: 40px;
+    }
+
+    @media (max-width: 768px) {
+      header {
+        padding: 70px 18px 55px;
+      }
+
+      header h1 {
+        font-size: 40px;
+      }
+
+      .section-title {
+        font-size: 28px;
+      }
+    }
+  </style>
 </head>
-
 <body>
 
-<header>
-<h1>Yeşil Cafe</h1>
-<p>Fresh Coffee • Good Mood</p>
+  <header>
+    <h1>Yeşil Cafe</h1>
+    <p>Fresh Coffee • Good Mood</p>
+    <div class="buttons">
+      <a class="btn btn-primary" href="#menu">Menü</a>
+      <a class="btn btn-primary" href="https://wa.me/905000000000" target="_blank">WhatsApp</a>
+      <a class="btn btn-secondary" href="https://maps.google.com" target="_blank">Yol Tarifi</a>
+    </div>
+  </header>
 
-<a class="btn" href="#">Menü</a>
-<a class="btn" href="#">WhatsApp</a>
-<a class="btn" href="#">Yol Tarifi</a>
-</header>
+  <section>
+    <h2 class="section-title">Hoş Geldiniz</h2>
+    <p class="section-text">
+      Şişli’de sıcak, samimi ve şık bir kahve deneyimi.
+      Taze kahve, tatlı molalar ve huzurlu bir ortam için Yeşil Cafe’ye bekleriz.
+    </p>
+  </section>
 
-<section>
-<h2>Hoş Geldiniz</h2>
-<p>Şişli’de sıcak, samimi ve şık bir kahve deneyimi.</p>
-</section>
+  <section id="menu">
+    <h2 class="section-title">Öne Çıkan Menü</h2>
+    <p class="section-text">En sevilen içecek ve tatlılarımız.</p>
 
-<section>
-<h2>Menü</h2>
-<p>Espresso • Latte • Türk Kahvesi • Çay • Tatlılar</p>
-</section>
+    <div class="menu-grid">
+      <div class="menu-card">
+        <h3>Kahveler</h3>
+        <p>Espresso — 90₺</p>
 
-<section>
-<h2>İletişim</h2>
-<p>Şişli / İstanbul</p>
-</section>
 
-</body>
-</html>
+<p>Americano — 130₺</p>
+        <p>Latte — 160₺</p>
+        <p>Cappuccino — 160₺</p>
+      </div>
+
+      <div class="menu-card">
+        <h3>Soğuk İçecekler</h3>
+        <p>Iced Americano — 180₺</p>
+        <p>Iced Latte — 200₺</p>
+        <p>Mocha — 245₺</p>
+        <p>Milkshake — 250₺</p>
+      </div>
+
+      <div class="menu-card">
+        <h3>Çay & Tatlı</h3>
+        <p>Türk Çayı — 35₺</p>
+        <p>Bitki Çayı — 90₺</p>
+        <p>Cookie — 80₺</p>
+        <p>Ev Yapımı Tatlı — 250₺</p>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <h2 class="section-title">Mekanımız</h2>
+    <p class="section-text">Sıcak atmosferimizden birkaç kare.</p>
+
+    <div class="gallery">
+      <img src="https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?auto=format&fit=crop&w=900&q=80" alt="Kahve" />
+      <img src="https://images.unsplash.com/photo-1501339847302-ac426a4a7cbb?auto=format&fit=crop&w=900&q=80" alt="Cafe iç mekan" />
+      <img src="https://images.unsplash.com/photo-1511920170033-f8396924c348?auto=format&fit=crop&w=900&q=80" alt="Tatlı ve kahve" />
+    </div>
+  </section>
+
+  <section>
+    <h2 class="section-title">İletişim</h2>
+    <div class="contact-box">
+      <p><strong>Adres:</strong> Şişli / İstanbul</p>
+      <p><strong>Çalışma Saatleri:</strong> 07:00 – 23:00</p>
+      <p><strong>Instagram:</strong> @yesilcafe</p>
+      <p><strong>Sipariş:</strong> WhatsApp üzerinden bize ulaşabilirsiniz.</p>
+    </div>
+  </section>
+
+  <footer>
+    ©️ 2026 Yeşil Cafe • Fresh Coffee • Good Mood
+  </footer>

@@ -4,381 +4,588 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Yeşil Cafe</title>
+
   <style>
-    * { box-sizing: border-box; scroll-behavior: smooth; }
-
-    body {
-      margin: 0;
-      font-family: Arial, sans-serif;
-      background: #0f1713;
-      color: #f4ead2;
-      line-height: 1.6;
+    :root{
+      --bg:#0c1713;
+      --bg-soft:#13211b;
+      --card:#16261f;
+      --gold:#d9b56b;
+      --gold-soft:#f0d79d;
+      --text:#f6f0dd;
+      --muted:#d8cfb8;
+      --line:rgba(217,181,107,.24);
+      --shadow:0 18px 40px rgba(0,0,0,.28);
+      --radius:20px;
     }
 
-    header {
-      background: linear-gradient(rgba(10,18,14,.72), rgba(10,18,14,.88)),
-                  url('https://images.unsplash.com/photo-1509042239860-f550ce710b93?auto=format&fit=crop&w=1400&q=80') center/cover no-repeat;
-      text-align: center;
-      padding: 70px 20px 50px;
-      border-bottom: 1px solid rgba(212,178,97,.25);
+    *{
+      box-sizing:border-box;
+      scroll-behavior:smooth;
     }
 
-    header h1 {
-      margin: 0;
-      font-size: 56px;
-      color: #e0b96e;
-      letter-spacing: 1px;
+    body{
+      margin:0;
+      font-family: Georgia, "Times New Roman", serif;
+      background:
+        radial-gradient(circle at top, rgba(217,181,107,.10), transparent 20%),
+        linear-gradient(180deg, #0b1511 0%, #102019 100%);
+      color:var(--text);
     }
 
-    header p {
-      margin: 12px 0 25px;
-      font-size: 20px;
-      color: #f4ead2;
+    a{
+      text-decoration:none;
+      color:inherit;
     }
 
-    .top-buttons {
-      display: flex;
-      justify-content: center;
-      gap: 12px;
-      flex-wrap: wrap;
-      margin-bottom: 18px;
+    img{
+      max-width:100%;
+      display:block;
     }
 
-    .btn {
-      display: inline-block;
-      padding: 12px 22px;
-      border-radius: 10px;
-      text-decoration: none;
-      font-weight: bold;
-      border: 1px solid #cda85f;
-      transition: .2s ease;
+    .container{
+      width:min(1180px, calc(100% - 28px));
+      margin:0 auto;
     }
 
-    .btn-primary {
-      background: #cda85f;
-      color: #132018;
+    .hero{
+      position:relative;
+      min-height:82vh;
+      display:flex;
+      align-items:center;
+      overflow:hidden;
+      border-bottom:1px solid var(--line);
+      background:
+        linear-gradient(rgba(7,14,11,.56), rgba(7,14,11,.78)),
+        url('https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?auto=format&fit=crop&w=1600&q=80') center/cover no-repeat;
     }
 
-    .btn-primary:hover {
-      background: #e3bf79;
+    .hero::before{
+      content:"";
+      position:absolute;
+      inset:0;
+      background:
+        radial-gradient(circle at center, rgba(217,181,107,.16), transparent 35%),
+        linear-gradient(180deg, rgba(0,0,0,.05), rgba(0,0,0,.35));
+      pointer-events:none;
     }
 
-    .btn-secondary {
-      color: #f4ead2;
-      background: rgba(255,255,255,.03);
+    .hero-content{
+      position:relative;
+      z-index:2;
+      padding:90px 0 70px;
+      text-align:center;
     }
 
-    .btn-secondary:hover {
-      background: rgba(205,168,95,.13);
+    .brand{
+      font-size:clamp(48px, 8vw, 92px);
+      line-height:1;
+      margin:0;
+      color:var(--gold-soft);
+      text-shadow:0 4px 18px rgba(0,0,0,.45);
+      letter-spacing:1px;
     }
 
-    .menu-nav {
-      max-width: 1150px;
-      margin: 0 auto;
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: center;
-      gap: 10px;
-      padding: 0 10px;
+    .tagline{
+      margin:18px auto 28px;
+      font-size:clamp(18px, 2.3vw, 28px);
+      color:#fff2ca;
+      max-width:760px;
     }
 
-    .menu-nav a {
-      padding: 8px 14px;
-      border-radius: 999px;
-      border: 1px solid rgba(212,178,97,.28);
-      font-size: 14px;
-      color: #f4ead2;
-      background: rgba(255,255,255,.03);
+    .hero-actions{
+      display:flex;
+      gap:14px;
+      justify-content:center;
+      flex-wrap:wrap;
+      margin-bottom:26px;
     }
 
-    .menu-nav a:hover {
-      background: rgba(205,168,95,.15);
+    .btn{
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      min-width:150px;
+      padding:14px 20px;
+      border-radius:999px;
+      border:1px solid var(--gold);
+      font-weight:700;
+      font-size:16px;
+      transition:.2s ease;
+      box-shadow:var(--shadow);
     }
 
-    section {
-      max-width: 1200px;
-      margin: 0 auto;
-      padding: 46px 18px;
+    .btn-primary{
+      background:linear-gradient(180deg, #e2c57e, #c99d48);
+      color:#1a1710;
     }
 
-    .intro {
-      text-align: center;
+    .btn-primary:hover{
+      transform:translateY(-2px);
+      filter:brightness(1.05);
     }
 
-    .intro h2,
-    .section-title {
-      color: #e0b96e;
-      font-size: 34px;
-      margin: 0 0 15px;
-      text-align: center;
+    .btn-secondary{
+      background:rgba(11,21,17,.45);
+      color:var(--text);
+      backdrop-filter:blur(4px);
     }
 
-    .intro p {
-      max-width: 760px;
-      margin: 0 auto;
-      font-size: 18px;
-      color: #ead9b2;
+    .btn-secondary:hover{
+      background:rgba(217,181,107,.10);
+      transform:translateY(-2px);
     }
 
-    .category-block {
-      margin-top: 34px;
-      background: linear-gradient(180deg, rgba(255,255,255,.03), rgba(255,255,255,.015));
-      border: 1px solid rgba(212,178,97,.18);
-      border-radius: 18px;
-      padding: 24px;
-      box-shadow: 0 10px 28px rgba(0,0,0,.22);
+    .quick-nav{
+      display:flex;
+      flex-wrap:wrap;
+      gap:10px;
+      justify-content:center;
+      max-width:1000px;
+      margin:0 auto;
     }
 
-    .subgrid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(290px, 1fr));
-      gap: 18px;
-      margin-top: 22px;
+    .quick-nav a{
+      padding:9px 14px;
+      border:1px solid rgba(255,232,185,.22);
+      border-radius:999px;
+      background:rgba(8,15,12,.34);
+      color:#f7ecc8;
+      font-size:14px;
+      backdrop-filter:blur(4px);
     }
 
-    .menu-card {
-      background: rgba(0,0,0,.16);
-      border: 1px solid rgba(212,178,97,.14);
-      border-radius: 16px;
-      padding: 18px;
+    .quick-nav a:hover{
+      background:rgba(217,181,107,.12);
     }
 
-    .menu-card h3 {
-      margin: 0 0 12px;
-      color: #e0b96e;
-      font-size: 24px;
-      border-bottom: 1px solid rgba(212,178,97,.18);
-      padding-bottom: 8px;
+    .section{
+      padding:56px 0;
     }
 
-    .item {
-      display: flex;
-      justify-content: space-between;
-      gap: 14px;
-      padding: 7px 0;
-      border-bottom: 1px dashed rgba(255,255,255,.08);
+    .section-title{
+      text-align:center;
+      margin:0 0 12px;
+      font-size:clamp(30px, 4vw, 46px);
+      color:var(--gold-soft);
     }
 
-    .item:last-child { border-bottom: none; }
-
-    .price {
-      color: #e0b96e;
-      font-weight: bold;
-      white-space: nowrap;
+    .section-text{
+      text-align:center;
+      margin:0 auto 28px;
+      max-width:820px;
+      color:var(--muted);
+      font-size:18px;
+      line-height:1.8;
     }
 
-    .note {
-      margin-top: 10px;
-      color: #d7c69e;
-      font-size: 14px;
+    .intro-grid{
+      display:grid;
+      grid-template-columns:1.05fr .95fr;
+      gap:24px;
+      align-items:stretch;
     }
 
-    .gallery-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-      gap: 18px;
-      margin-top: 24px;
+    .panel{
+      background:
+        linear-gradient(180deg, rgba(255,255,255,.02), rgba(255,255,255,.01)),
+        var(--card);
+      border:1px solid var(--line);
+      border-radius:var(--radius);
+      box-shadow:var(--shadow);
+      overflow:hidden;
     }
 
-    .gallery-grid img {
-      width: 100%;
-      border-radius: 16px;
-      box-shadow: 0 8px 24px rgba(0,0,0,.25);
-      display: block;
+    .panel-pad{
+      padding:28px;
     }
 
-    .contact-box {
-      background: rgba(0,0,0,.16);
-      border: 1px solid rgba(212,178,97,.18);
-      border-radius: 16px;
-      padding: 24px;
-      text-align: center;<div class="item"><span>Türk Çayı (Bardak)</span><span class="price">35₺</span></div>
-          <div class="item"><span>Türk Çayı (Fincan)</span><span class="price">50₺</span></div>
-          <div class="item"><span>İran Çayı (Bardak)</span><span class="price">60₺</span></div>
-          <div class="item"><span>İran Çayı (Fincan)</span><span class="price">75₺</span></div>
-          <div class="item"><span>Zencefil & Nane</span><span class="price">80₺</span></div>
-          <div class="item"><span>Kekik</span><span class="price">90₺</span></div>
-        </div>
+    .feature-list{
+      display:grid;
+      grid-template-columns:repeat(2, minmax(0,1fr));
+      gap:14px;
+      margin-top:18px;
+    }
+
+    .feature{
+      padding:16px;
+      border:1px solid var(--line);
+      border-radius:16px;
+      background:rgba(255,255,255,.02);
+      color:var(--muted);
+    }
+
+    .feature strong{
+      display:block;
+      color:var(--gold-soft);
+      margin-bottom:6px;
+      font-size:17px;
+    }
+
+    .intro-image{
+      min-height:100%;
+      background:
+        linear-gradient(rgba(12,18,15,.18), rgba(12,18,15,.34)),
+        url('https://images.unsplash.com/photo-1501339847302-ac426a4a7cbb?auto=format&fit=crop&w=1200&q=80') center/cover no-repeat;
+    }
+
+    .menu-categories{
+      display:grid;
+      grid-template-columns:repeat(auto-fit, minmax(290px,1fr));
+      gap:22px;
+    }
+
+    .menu-card{
+      background:
+        linear-gradient(180deg, rgba(255,255,255,.02), rgba(255,255,255,.01)),
+        var(--card);
+      border:1px solid var(--line);
+      border-radius:22px;
+      overflow:hidden;
+      box-shadow:var(--shadow);
+    }
+
+    .menu-head{
+      padding:20px 20px 14px;
+      background:
+        linear-gradient(180deg, rgba(217,181,107,.12), rgba(217,181,107,.03));
+      border-bottom:1px solid var(--line);
+    }
+
+    .menu-head h3{
+      margin:0;
+      font-size:28px;
+      color:var(--gold-soft);
+    }
+
+    .menu-head p{
+      margin:8px 0 0;
+      color:var(--muted);
+      font-size:15px;
+    }
+
+    .menu-body{
+      padding:18px 20px 22px;
+    }
+
+    .menu-group{
+      margin-bottom:20px;
+    }
+
+    .menu-group:last-child{
+      margin-bottom:0;
+    }
+
+    .menu-group h4{
+      margin:0 0 10px;
+      color:var(--gold);
+      font-size:20px;
+      border-bottom:1px dashed rgba(217,181,107,.22);
+      padding-bottom:8px;
+    }
+
+    .item{
+      display:flex;
+      justify-content:space-between;
+      gap:14px;
+      padding:8px 0;
+      border-bottom:1px dashed rgba(255,255,255,.06);
+      color:var(--text);
+      font-size:17px;
+    }
+
+    .item:last-child{
+      border-bottom:none;
+    }
+
+    .item-name{
+      padding-right:10px;
+    }
+
+    .price{
+      color:var(--gold-soft);
+      white-space:nowrap;
+      font-weight:700;
+    }
+
+    .menu-note{
+      margin-top:10px;
+      color:var(--muted);
+      font-size:14px;
+      line-height:1.7;
+    }
+
+    .showcase{
+      display:grid;
+      grid-template-columns:repeat(3, 1fr);
+      gap:18px;
+    }
+
+    .showcase-card{
+      position:relative;
+      min-height:270px;
+      border-radius:20px;
+      overflow:hidden;
+      border:1px solid var(--line);
+      box-shadow:var(--shadow);
+      background:var(--card);
+    }
+
+    .showcase-card img{
+      width:100%;
+      height:100%;
+      object-fit:cover;
+    }
+
+    .showcase-card::after{
+      content:"";
+      position:absolute;
+      inset:0;
+      background:linear-gradient(180deg, transparent 30%, rgba(0,0,0,.52) 100%);
+    }
+
+    .showcase-card span{
+      position:absolute;
+      left:16px;
+      bottom:14px;
+      z-index:2;
+      color:#fff1c9;
+      font-size:22px;
+      font-weight:700;
+      text-shadow:0 2px 10px rgba(0,0,0,.5);
+    }
+
+    .contact-grid{
+      display:grid;
+      grid-template-columns:1fr 1fr;
+      gap:22px;
+    }
+
+    .contact-card{
+      background:var(--card);
+      border:1px solid var(--line);
+      border-radius:20px;
+      padding:26px;
+      box-shadow:var(--shadow);
+    }
+
+    .contact-card h3{
+      margin-top:0;
+      color:var(--gold-soft);
+      font-size:28px;
+    }
+
+    .contact-card p{
+      margin:10px 0;
+      color:var(--muted);
+      font-size:17px;
+      line-height:1.8;
+    }
+
+    .footer{
+      padding:26px 0 38px;
+      text-align:center;
+      color:#d7cca8;
+      border-top:1px solid var(--line);
+      background:#0a120f;
+      margin-top:10px;
+    }
+
+    @media (max-width: 950px){
+      .intro-grid,
+      grid-template-columns:1fr;
+      }
+
+      .showcase{
+        grid-template-columns:1fr;
+      }
+
+      .intro-image{
+        min-height:320px;
+      }
+    }
+
+    @media (max-width: 640px){
+      .section{
+        padding:44px 0;
+      }
+
+      .panel-pad,
+      .contact-card,
+      .menu-body{
+        padding:18px;
+      }
+
+      .menu-head{
+        padding:16px 18px 12px;
+      }
+
+      .feature-list{
+        grid-template-columns:1fr;
+      }
+
+      .item{
+        font-size:15px;
+      }
+
+      .btn{
+        min-width:unset;
+        width:100%;
+      }
+
+      .hero-actions{
+        display:grid;
+        grid-template-columns:1fr;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <header class="hero">
+    <div class="container hero-content">
+      <h1 class="brand">Yeşil Cafe</h1>
+      <p class="tagline">Fresh Coffee • Good Mood • Türk ve İran mutfağından seçmeler</p>
+
+      <div class="hero-actions">
+        <a class="btn btn-primary" href="#menu">Menüyü Gör</a>
+        <a class="btn btn-primary" href="https://wa.me/905000000000" target="_blank">WhatsApp Sipariş</a>
+        <a class="btn btn-secondary" href="https://maps.google.com" target="_blank">Yol Tarifi</a>
+      </div>
+
+      <div class="quick-nav">
+        <a href="#kahvalti">Kahvaltı</a>
+        <a href="#sicak">Sıcak İçecekler</a>
+        <a href="#soguk">Soğuk İçecekler</a>
+        <a href="#turk">Türk Yemekleri</a>
+        <a href="#iran">İran Yemekleri</a>
+        <a href="#pizza">Pizza</a>
+        <a href="#burger">Burger</a>
+        <a href="#tost">Tost</a>
+        <a href="#corba">Çorbalar</a>
+        <a href="#tatli">Tatlılar</a>
       </div>
     </div>
+  </header>
 
-    <div id="soguk-icecekler" class="category-block">
-      <h2 class="section-title">Soğuk İçecekler</h2>
-      <div class="subgrid">
-        <div class="menu-card">
-          <h3>Soğuk Kahveler</h3>
-          <div class="item"><span>Iced Americano</span><span class="price">180₺</span></div>
-          <div class="item"><span>Iced Latte</span><span class="price">200₺</span></div>
-          <div class="item"><span>Iced Cappuccino</span><span class="price">200₺</span></div>
-          <div class="item"><span>Iced Mocha</span><span class="price">200₺</span></div>
-          <div class="item"><span>Frappe</span><span class="price">210₺</span></div>
-          <div class="item"><span>Cold Brew Coffee</span><span class="price">210₺</span></div>
-          <div class="item"><span>Iced White Mocha</span><span class="price">215₺</span></div>
-          <div class="item"><span>Iced Caramel Latte</span><span class="price">215₺</span></div>
-          <div class="item"><span>Affogato</span><span class="price">225₺</span></div>
-        </div>
-        <div class="menu-card">
-          <h3>Milkshake & Diğerleri</h3>
-          <div class="item"><span>Chocolate Milkshake</span><span class="price">200₺</span></div>
-          <div class="item"><span>Strawberry Milkshake</span><span class="price">200₺</span></div>
-          <div class="item"><span>Vanilla Milkshake</span><span class="price">200₺</span></div>
-          <div class="item"><span>Oreo Milkshake</span><span class="price">220₺</span></div>
-          <div class="item"><span>Banana Milkshake</span><span class="price">215₺</span></div>
-          <div class="item"><span>Classic Lemonade</span><span class="price">130₺</span></div>
-          <div class="item"><span>Strawberry Lemonade</span><span class="price">140₺</span></div>
-          <div class="item"><span>Mint Lemonade</span><span class="price">160₺</span></div>
-          <div class="item"><span>Mojito</span><span class="price">120₺</span></div>
-          <div class="item"><span>Su</span><span class="price">30₺</span></div>
-        </div>
-      </div>
-    </div>
+  <section class="section">
+    <div class="container intro-grid">
+      <div class="panel panel-pad">
+        <h2 class="section-title" style="text-align:right; margin-top:0;">Hoş Geldiniz</h2>
+        <p class="section-text" style="text-align:right; margin-bottom:0;">
+          Şişli’de sıcak, samimi ve şık bir kahve deneyimi.
+          Kahvaltıdan sıcak içeceklere, soğuk kahvelerden tatlılara,
+          Türk ve İran mutfağından özenle seçilmiş lezzetlerle Yeşil Cafe’ye bekleriz.
+        </p>
 
-    <div id="pizza" class="category-block">
-      <h2 class="section-title">Pizza</h2>
-      <div class="subgrid">
-        <div class="menu-card">
-          <h3>Pizza Çeşitleri</h3>
-          <div class="item"><span>Karışık Pizza</span><span class="price">320₺</span></div>
-          <div class="item"><span>Yeşil Spesiyal Pizza</span><span class="price">360₺</span></div>
+        <div class="feature-list">
+          <div class="feature">
+            <strong>Kahvaltı</strong>
+            Serpme kahvaltı, menemen, omlet ve sahanda yumurtalar.
+          </div>
+          <div class="feature">
+            <strong>Kahve & Çay</strong>
+            Espresso bazlı kahveler, Türk kahvesi, İran çayı ve bitki çayları.
+          </div>
+          <div class="feature">
+            <strong>Ana Yemek</strong>
+            Pizza, burger, tost, Türk yemekleri ve İran yemekleri.
+          </div>
+          <div class="feature">
+            <strong>Tatlılar</strong>
+            Cheesecake, mozaik pasta, brownie, magnolia ve özel öneriler.
+          </div>
         </div>
       </div>
+
+      <div class="panel intro-image"></div>
     </div>
+  </section>
 
-    <div id="burger" class="category-block">
-      <h2 class="section-title">Burger</h2>
-      <div class="subgrid">
-        <div class="menu-card">
-          <h3>Burger Çeşitleri</h3>
-          <div class="item"><span>Hamburger (Klasik)</span><span class="price">280₺</span></div>
-        </div>
-      </div>
-    </div>
+  <section id="menu" class="section">.
+    
+    <div class="container">
+      <h2 class="section-title">Menü</h2>
+      <p class="section-text">
+        Aşağıda kategorilere göre düzenlenmiş güncel menümüzü görebilirsiniz.
+      </p>
 
-    <div id="tost" class="category-block">
-      <h2 class="section-title">Tost & Sandviç</h2>
-      <div class="subgrid">
-        <div class="menu-card">
-          <h3>Tost Çeşitleri</h3>
-          <div class="item"><span>Kaşarlı Tost</span><span class="price">250₺</span></div>
-          <div class="item"><span>Sucuklu Tost</span><span class="price">250₺</span></div>
-        </div>
-      </div>
-    </div>
+      <div class="menu-categories">
 
-    <div id="turk-yemekleri" class="category-block">
-      <h2 class="section-title">Türk Yemekleri</h2>
-      <div class="subgrid">
-        <div class="menu-card">
-          <h3>Ana Yemekler</h3<div class="item"><span>Adana Kebap (Porsiyon)</span><span class="price">500₺</span></div>
-          <div class="item"><span>Urfa Kebap (Porsiyon)</span><span class="price">500₺</span></div>
-          <div class="item"><span>Tavuk Kanat (Porsiyon)</span><span class="price">350₺</span></div>
-          <div class="item"><span>Tavuk Döner & Pilav</span><span class="price">280₺</span></div>
-          <div class="item"><span>Et Döner & Pilav</span><span class="price">380₺</span></div>
-          <div class="item"><span>Köfte & Pilav</span><span class="price">280₺</span></div>
-        </div>
-      </div>
-    </div>
+        <div id="kahvalti" class="menu-card">
+          <div class="menu-head">
+            <h3>Kahvaltı</h3>
+            <p>Serpme, tabak kahvaltı, yumurta ve omlet çeşitleri</p>
+          </div>
+          <div class="menu-body">
+            <div class="menu-group">
+              <h4>Tabak Kahvaltı</h4>
+              <div class="item"><span class="item-name">Klasik Kahvaltı</span><span class="price">480₺</span></div>
+              <div class="item"><span class="item-name">Spesiyal Kahvaltı</span><span class="price">550₺</span></div>
+              <div class="item"><span class="item-name">Light Kahvaltı</span><span class="price">420₺</span></div>
+              <div class="item"><span class="item-name">Muhlama</span><span class="price">450₺</span></div>
+            </div>
 
-    <div id="iran-yemekleri" class="category-block">
-      <h2 class="section-title">İran Yemekleri</h2>
-      <div class="subgrid">
-        <div class="menu-card">
-          <h3>İran Ana Yemekleri</h3>
-          <div class="item"><span>Zereshk Polo ba Morgh</span><span class="price">420₺</span></div>
-          <div class="item"><span>Gheymeh & Pilav</span><span class="price">420₺</span></div>
-          <div class="item"><span>Ghorme Sabzi & Pilav</span><span class="price">420₺</span></div>
-        </div>
-      </div>
-    </div>
+            <div class="menu-group">      <h4>Serpme Kahvaltı</h4>
+              <div class="item"><span class="item-name">2 Kişilik Serpme Kahvaltı</span><span class="price">1000₺</span></div>
+              <div class="menu-note">Beyaz peynir, tereyağlı yumurta, siyah & yeşil zeytin, domates & salatalık, bal & reçel, tereyağı, sigara böreği.</div>
+            </div>
 
-    <div id="corbalar" class="category-block">
-      <h2 class="section-title">Çorbalar</h2>
-      <div class="subgrid">
-        <div class="menu-card">
-          <h3>Çorba Çeşitleri</h3>
-          <div class="item"><span>Ezogelin Çorbası</span><span class="price">150₺</span></div>
-          <div class="item"><span>Mercimek Çorbası</span><span class="price">150₺</span></div>
-          <div class="item"><span>Şehriyeli Çorba</span><span class="price">250₺</span></div>
-          <div class="item"><span>Aş Reshte (İran Çorbası)</span><span class="price">250₺</span></div>
-        </div>
-      </div>
-    </div>
+            <div class="menu-group">
+              <h4>Sahanda Yumurtalar</h4>
+              <div class="item"><span class="item-name">Sahanda Yumurta</span><span class="price">220₺</span></div>
+              <div class="item"><span class="item-name">Tereyağlı Yumurta</span><span class="price">250₺</span></div>
+              <div class="item"><span class="item-name">Peynirli Yumurta</span><span class="price">290₺</span></div>
+              <div class="item"><span class="item-name">Sucuklu Yumurta</span><span class="price">340₺</span></div>
+            </div>
 
-    <div id="pilavlar" class="category-block">
-      <h2 class="section-title">Pilavlar</h2>
-      <div class="subgrid">
-        <div class="menu-card">
-          <h3>Pilavlı Yemekler</h3>
-          <div class="item"><span>Zereshk Polo ba Morgh</span><span class="price">420₺</span></div>
-          <div class="item"><span>Gheymeh & Pilav</span><span class="price">420₺</span></div>
-          <div class="item"><span>Ghorme Sabzi & Pilav</span><span class="price">420₺</span></div>
-          <div class="item"><span>Tavuk Döner & Pilav</span><span class="price">280₺</span></div>
-          <div class="item"><span>Et Döner & Pilav</span><span class="price">380₺</span></div>
-          <div class="item"><span>Köfte & Pilav</span><span class="price">280₺</span></div>
-        </div>
-      </div>
-    </div>
+            <div class="menu-group">
+              <h4>Menemen Çeşitleri</h4>
+              <div class="item"><span class="item-name">Klasik Menemen</span><span class="price">290₺</span></div>
+              <div class="item"><span class="item-name">Peynirli Menemen</span><span class="price">330₺</span></div>
+              <div class="item"><span class="item-name">Sucuklu Menemen</span><span class="price">370₺</span></div>
+            </div>
 
-    <div class="category-block">
-      <h2 class="section-title">Atıştırmalıklar</h2>
-      <div class="subgrid">
-        <div class="menu-card">
-          <h3>Atıştırmalıklar</h3>
-          <div class="item"><span>Patates Tabağı</span><span class="price">140₺</span></div>
-          <div class="item"><span>Samosa (Sebzeli Börek)</span><span class="price">180₺</span></div>
-          <div class="item"><span>Falafel (Nohut Köftesi)</span><span class="price">180₺</span></div>
-          <div class="item"><span>Çıtır Tavuk</span><span class="price">260₺</span></div>
-        </div>
-      </div>
-    </div>
-
-    <div id="tatlilar" class="category-block">
-      <h2 class="section-title">Tatlılar & Kekler</h2>
-      <div class="subgrid">
-        <div class="menu-card">
-          <h3>Cheesecake Çeşitleri</h3>
-          <div class="item"><span>San Sebastian Cheesecake</span><span class="price">270₺</span></div>
-          <div class="item"><span>Classic Cheesecake</span><span class="price">250₺</span></div>
-          <p class="note">Limon / Lotus / Frambuaz</p>
+            <div class="menu-group">
+              <h4>Omlet Çeşitleri</h4>
+              <div class="item"><span class="item-name">Sade Omlet</span><span class="price">240₺</span></div>
+              <div class="item"><span class="item-name">Peynirli Omlet</span><span class="price">280₺</span></div>
+              <div class="item"><span class="item-name">Sucuklu Omlet</span><span class="price">330₺</span></div>
+            </div>
+          </div>
         </div>
 
-        <div id="kekler" class="menu-card">
-          <h3>Kekler</h3>
-          <div class="item"><span>Mozaik Pasta</span><span class="price">190₺</span></div>
-          <div class="item"><span>Islak Kek (Çikolatalı)</span><span class="price">170₺</span></div>
-          <div class="item"><span>Brownie</span><span class="price">230₺</span></div>
-        </div>
+        <div id="sicak" class="menu-card">
+          <div class="menu-head">
+            <h3>Sıcak İçecekler</h3>
+            <p>Espresso bazlı kahveler, çay ve özel sıcaklar</p>
+          </div>
+          <div class="menu-body">
+            <div class="menu-group">
+              <h4>Espresso Bazlı</h4>
+              <div class="item"><span class="item-name">Espresso</span><span class="price">90₺</span></div>
+              <div class="item"><span class="item-name">Double Espresso</span><span class="price">120₺</span></div>
+              <div class="item"><span class="item-name">Americano</span><span class="price">130₺</span></div>
+              <div class="item"><span class="item-name">Latte</span><span class="price">160₺</span></div>
+              <div class="item"><span class="item-name">Cappuccino</span><span class="price">160₺</span></div>
+              <div class="item"><span class="item-name">Mocha</span><span class="price">180₺</span></div>
+              <div class="item"><span class="item-name">Latte Macchiato</span><span class="price">170₺</span></div>
+              <div class="item"><span class="item-name">Flat White</span><span class="price">170₺</span></div>
+              <div class="item"><span class="item-name">Filtre Kahve</span><span class="price">140₺</span></div>
+              <div class="item"><span class="item-name">Türk Kahvesi (Lokum ikramdır)</span><span class="price">120₺</span></div>
+            </div>
 
-        <div class="menu-card">
-          <h3>Özel Tatlılar</h3>
-<div class="item"><span>Magnolia</span><span class="price">220₺</span></div>
-          <div class="item"><span>Meyve Tabağı</span><span class="price">230₺</span></div>
-        </div>
+            <div class="menu-group">
+              <h4>Özel Sıcaklar</h4>
+              <div class="item"><span class="item-name">Sıcak Çikolata</span><span class="price">170₺</span></div>
+              <div class="item"><span class="item-name">Salep</span><span class="price">180₺</span></div>
+              <div class="item"><span class="item-name">Sıcak Kakao</span><span class="price">120₺</span></div>
+            </div>
 
-        <div class="menu-card">
-          <h3>Kampanyalı Öneri</h3>
-          <div class="item"><span>San Sebastian + Kahve</span><span class="price">390₺</span></div>
-          <div class="item"><span>İran Çayı + Mozaik Pasta</span><span class="price">230₺</span></div>
-        </div>
-      </div>
-    </div>
-
-    <div class="category-block">
-      <h2 class="section-title">Menü Görselleri</h2>
-      <div class="gallery-grid">
-        <img src="https://images.unsplash.com/photo-1509042239860-f550ce710b93?auto=format&fit=crop&w=1200&q=80" alt="Kahve" />
-        <img src="https://images.unsplash.com/photo-1521017432531-fbd92d768814?auto=format&fit=crop&w=1200&q=80" alt="Kahvaltı" />
-        <img src="https://images.unsplash.com/photo-1513104890138-7c749659a591?auto=format&fit=crop&w=1200&q=80" alt="Pizza" />
-        <img src="https://images.unsplash.com/photo-1568901346375-23c9450c58cd?auto=format&fit=crop&w=1200&q=80" alt="Burger" />
-        <img src="https://images.unsplash.com/photo-1551024601-bec78aea704b?auto=format&fit=crop&w=1200&q=80" alt="İçecek" />
-        <img src="https://images.unsplash.com/photo-1551024506-0bccd828d307?auto=format&fit=crop&w=1200&q=80" alt="Tatlı" />
-      </div>
-    </div>
-
-    <div class="category-block">
-      <h2 class="section-title">İletişim</h2>
-      <div class="contact-box">
+            <div class="menu-group">
+              <h4>Türk Kahvesi & Çay</h4>
+              <div class="item"><span class="item-name">Çay Demlik</span><span class="price">150₺</span></div>
+              <div class="item"><span class="item-name">Türk Çayı (Bardak)</span><span class="price">35₺</span></div>
               
-              
-        <p><strong>Adres:</strong> Şişli / İstanbul</p>
-        <p><strong>Çalışma Saatleri:</strong> 07:00 – 23:00</p
+              <div class="item"><span class="item-name">Türk Çayı (Fincan)</span><span class="price">50₺</span></div>              <h4>Serpme Kahvaltı</h4>      .contact-grid{                      background:
+        linear-gradient(180deg, rgba(255,255,255,.02), rgba(255,255,255,.01)),
